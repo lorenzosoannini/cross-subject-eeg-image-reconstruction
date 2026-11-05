@@ -1,0 +1,22 @@
+test_blurry_latent_matches_224_pixel_autoencoder_grid (test_images.ImageTests.test_blurry_latent_matches_224_pixel_autoencoder_grid) ... ok
+test_center_crop_preserves_study_geometry (test_images.ImageTests.test_center_crop_preserves_study_geometry) ... ok
+test_pairing_and_strict_ties (test_metrics.MetricTests.test_pairing_and_strict_ties) ... ok
+test_average_is_after_nonlinearity_before_prior (test_model_routes.RoutesTests.test_average_is_after_nonlinearity_before_prior) ... ok
+test_joint_decoder_gradients_reach_both_learned_branches (test_model_routes.RoutesTests.test_joint_decoder_gradients_reach_both_learned_branches) ... ok
+test_lora_gate_and_subject_gradient_reversal (test_model_routes.RoutesTests.test_lora_gate_and_subject_gradient_reversal) ... ok
+test_prior_uses_Fs_in_training_and_inference (test_model_routes.RoutesTests.test_prior_uses_Fs_in_training_and_inference) ... ok
+test_forward_backward_and_twenty_corrected_ddim_steps (test_prior.PriorTests.test_forward_backward_and_twenty_corrected_ddim_steps) ... ok
+test_target_uses_frozen_source_transform_and_zero_padding (test_protocol.LoaderIntegrationTests.test_target_uses_frozen_source_transform_and_zero_padding) ... ok
+test_partition_is_reproducible_and_disjoint (test_protocol.ProtocolTests.test_partition_is_reproducible_and_disjoint) ... ok
+test_population_moments_weight_valid_samples (test_protocol.ProtocolTests.test_population_moments_weight_valid_samples) ... ok
+test_statistics_exclude_development_evaluation_and_target (test_protocol.ProtocolTests.test_statistics_exclude_development_evaluation_and_target) ... ok
+test_statistics_reject_modified_partition (test_protocol.ProtocolTests.test_statistics_reject_modified_partition) ... ok
+test_validation_evaluation_photo_reuse_rejected (test_protocol.ProtocolTests.test_validation_evaluation_photo_reuse_rejected) ... ok
+test_caption_input_is_fixed_to_generated_images (test_source_contract.SourceContractTests.test_caption_input_is_fixed_to_generated_images) ... ok
+test_retired_names_and_altered_logging_are_absent (test_source_contract.SourceContractTests.test_retired_names_and_altered_logging_are_absent) ... ok
+test_yaml_sgm_targets_exist (test_source_contract.SourceContractTests.test_yaml_sgm_targets_exist) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.273s
+
+OK

@@ -1,0 +1,63 @@
+{
+  "thesis": {
+    "title": "EEG-to-Image Reconstruction through Multimodal Visual-Semantic Alignment",
+    "author": "Lorenzo Soannini",
+    "document": "thesis/main.pdf",
+    "pages": 79,
+    "sha256": "137edc524f5ef658f443dccbd9e829686e6c62b077903a805a6a4b4a4c2f295d"
+  },
+  "presentation": {
+    "document": "output/defense_beamer_v9/Thesis_defence_Soannini_v9.pdf",
+    "pages": 21,
+    "sha256": "83cd6762bbaf18ea42ddabe99ef45911c4d7a2ccb71d2d6d2beda88f8cbb505d"
+  },
+  "assets": [
+    {
+      "file": "assets/reconstructions.png",
+      "source": "thesis/figures/qualitative_selected_successes.pdf",
+      "source_sha256": "66941556cb297e2d715cff23ba9a34b7fb5bb1ec55a831f2ab495d4ffe669815",
+      "rendering": "pdftoppm PNG; architecture respects the PDF CropBox; figures and measured values unchanged"
+    },
+    {
+      "file": "assets/failure-cases.png",
+      "source": "thesis/figures/qualitative_selected_errors.pdf",
+      "source_sha256": "92ebc0ffca350a38afe0c241a95b275d2ffad83c9493297cef6277d50cf3322a",
+      "rendering": "pdftoppm PNG; architecture respects the PDF CropBox; figures and measured values unchanged"
+    },
+    {
+      "file": "assets/controlled-comparisons.png",
+      "source": "thesis/figures/controlled_comparison_summary.pdf",
+      "source_sha256": "e2a09da3fd7d6bfe4c5b41aff28bccb272c9c41ee602aa1cec6fcd03aea2f317",
+      "rendering": "pdftoppm PNG; architecture respects the PDF CropBox; figures and measured values unchanged"
+    },
+    {
+      "file": "assets/architecture.png",
+      "source": "thesis/figures/architecture_author_horizontal.pdf",
+      "source_sha256": "dd0623380ecce456eae9844894daa067767e87690367ffcc0d12ad7a5f682d9d",
+      "rendering": "pdftoppm PNG; architecture respects the PDF CropBox; figures and measured values unchanged"
+    }
+  ],
+  "result_tables": [
+    {
+      "file": "results/full_vocabulary.csv",
+      "source": "thesis/results/embedding_mean_metrics.csv",
+      "source_sha256": "6cc2dae297a2d45f3fb672838e96852ad9ecd720a344279e2e6002b343b43c51"
+    },
+    {
+      "file": "results/decomposition_100.csv",
+      "source": "thesis/results/residual_vs_dsn_matched100.csv",
+      "source_sha256": "c2e8f740865ae6e66d31b63fc164981928a811845b1a78ee2328096890b15cee"
+    },
+    {
+      "file": "results/aggregation_100.csv",
+      "source": "thesis/results/first_vs_mean_matched100.csv",
+      "source_sha256": "768e4ecb4a9cbad1446c636616f79582697d684f08bbf2405c4da4bdad91ce91"
+    },
+    {
+      "file": "results/atm_harmonized.csv",
+      "source": "thesis/results/atm/atm_metrics_harmonized.csv",
+      "source_sha256": "432e29030bb4e63b480ccd495120b315ac9f7fee29dd163e8f8e2ea66f3dd9eb"
+    }
+  ],
+  "scope": "Reported thesis experiment results; no new training or reconstruction runs were executed for this portfolio release."
+}

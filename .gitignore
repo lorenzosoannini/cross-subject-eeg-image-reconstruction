@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.DS_Store
+data/
+output/
+pretrained_weights/
+wandb/
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.partial*

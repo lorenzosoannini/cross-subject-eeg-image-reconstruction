@@ -1,0 +1,138 @@
+[
+  {
+    "source": "model/eeg_reve_zebra_backbone.py",
+    "symbols": [
+      "GradReverse",
+      "LoRALinear",
+      "inject_reve_lora",
+      "SubjDiscriminator",
+      "SubjClassifier",
+      "SemanticBottleneck",
+      "ChannelWiseAttention",
+      "SparseAwareVisionProjector",
+      "CrossAttentionResamplerLayer",
+      "VisualTokenResampler",
+      "_find_first_tensor",
+      "REVEAsZEBRAEncoder",
+      "EEGReconDecoder"
+    ],
+    "source_sha256": "9a346b86d2e75870554895d7192f8bd079f4f6f068888825c92c4c0ae0c5b39a"
+  },
+  {
+    "source": "model/timm_compat.py",
+    "destination": "model/timm_compat.py",
+    "source_sha256": "903c85222f438959cf7be4ea50c78e8a8f9d5cda8909fe53d9592286f69cf400"
+  },
+  {
+    "source": "model/dsn_losses.py",
+    "destination": "model/dsn_losses.py",
+    "source_sha256": "ad1b250800eff49741109e4fd5257385985bfea09aecce9748c944d81f10d278"
+  },
+  {
+    "source": "model/eeg_reve_dsn_backbone.py",
+    "symbols": [
+      "DSNLatentBranch",
+      "DSNLatentDecoder",
+      "DSNLatentDecomposition"
+    ],
+    "source_sha256": "a6beea3e19793925dd78327c262e46ddcb4d673fc86b909416bbd1721d878688"
+  },
+  {
+    "source": "model/ZEBRA_Model.py",
+    "symbols": [
+      "BlurryReconDecoder",
+      "GradReverse",
+      "ImageDiscriminator",
+      "ImageClassifier",
+      "CLIPProj"
+    ],
+    "source_sha256": "9c8fc6bcfe576ca805bfef41ad9eab57e157a5cb71f4cffa2a6fae1e9a3115ca"
+  },
+  {
+    "source": "model/ZEBRA_Model.py",
+    "symbols": [
+      "BrainDiffusionPrior",
+      "PriorNetwork",
+      "FlaggedCausalTransformer"
+    ],
+    "source_sha256": "9c8fc6bcfe576ca805bfef41ad9eab57e157a5cb71f4cffa2a6fae1e9a3115ca"
+  },
+  {
+    "source": "data_loader/things_eeg2_cache_identity.py",
+    "destination": "data_loader/things_eeg2_cache_identity.py",
+    "source_sha256": "b4ab41b81935da47e275e6d4a122fac93cdb62eb5c5cfeaba83f23a56e3d9cd2"
+  },
+  {
+    "source": "tools/build_things_eeg2_index.py",
+    "destination": "tools/build_things_eeg2_index.py",
+    "source_sha256": "2750e703520b62063cc73324bc45f1a15341f7595daef0bbc241e2ee699690a1"
+  },
+  {
+    "source": "tools/cache_things_eeg2_openclip.py",
+    "destination": "tools/cache_things_eeg2_openclip.py",
+    "source_sha256": "099e673d15a17ffd8200109bbf5123ed1e7d41e59bf2e8613bfaf2e9a7a15d79"
+  },
+  {
+    "source": "tools/downsample_things_eeg2_raw.py",
+    "destination": "tools/downsample_things_eeg2_raw.py",
+    "source_sha256": "31f732b95f30dd52c7bd7afe9e26ab79dc1938f27817591a8d5a38386af5e3a4"
+  },
+  {
+    "source": "eval/eval_metrics.py",
+    "destination": "eval/eval_metrics.py",
+    "source_sha256": "7c5c43520ef2da1008de2bd0619a10164153960a324f6c80454b069a4164e6d9"
+  },
+  {
+    "source": "eval/caption_keyframe.py",
+    "destination": "eval/caption_keyframe.py",
+    "source_sha256": "47199fcc6f08a4eb9806128047dcef4323780a0cb591b287d72f4901b6e3601f"
+  },
+  {
+    "source": "eval/recon_enhance_dsn_v4.py",
+    "destination": "eval/enhance.py",
+    "source_sha256": "623031fef7db289d9ac7f2612893d840d31375b545010f6b82320e59f0b81c27"
+  },
+  {
+    "source": "data_loader/things_eeg2_reve_dataset.py",
+    "destination": "data_loader/things_eeg2_reve_dataset.py",
+    "source_sha256": "997c6ba12f58ae7d591bcc5e5dfefd4d5050d9401322853f71e6f66473b836d4"
+  },
+  {
+    "source": "utils.py",
+    "symbols": [
+      "seed_everything",
+      "unclip_recon"
+    ],
+    "source_sha256": "03040fb18a0a1fc968ef7f6ae7758c80ca47e8100e8cf1f132334aeeea185c80"
+  },
+  {
+    "source": "eval/recon_things_eeg2_dsn_v4.py",
+    "symbols": [
+      "prepare_unclip",
+      "prepare_vector_suffix"
+    ],
+    "source_sha256": "82f71d0d1659d407ad24ba39038d46b25fd6b2d761ba24ad010e74b24603861b"
+  },
+  {
+    "source": "tools/train_things_eeg2_downstream.py",
+    "symbols": [
+      "build_frozen_autoencoder",
+      "build_text_targets",
+      "multi_positive_token_clip_loss"
+    ],
+    "source_sha256": "228bbe090ac741430222fbf3622b65c7af70b0345ca3524dde49e1e4f93241a3"
+  },
+  {
+    "source": "generative_models/LICENSE-CODE",
+    "destination": "generative_models/LICENSE-CODE",
+    "source_sha256": "512253f7b27e32cfdd3fc3088fb2ba1fa3f07f1df00b94d503fb3959a11af52d"
+  },
+  {
+    "source": "eval/recon_things_eeg2_dsn_v4.py",
+    "symbols": [
+      "load_image"
+    ],
+    "destination": "data_loader/images.py",
+    "source_sha256": "82f71d0d1659d407ad24ba39038d46b25fd6b2d761ba24ad010e74b24603861b"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-05",
+  "python": "3.12.14",
+  "torch": "2.5.0",
+  "numpy": "2.4.6",
+  "device": "cpu",
+  "tests_run": 17,
+  "failures": 0,
+  "errors": 0,
+  "success": true,
+  "elapsed_seconds": 2.084
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "path": "generative_models/sgm/__init__.py",
+    "sha256": "990b90eb3dbfa0281803b90ef99df2dc5be4fc6f9fcb7e493fdfde2f8b614dcb",
+    "portfolio_sha256": "77d175af9763f5af347256b746a1fc5c9a97f331e6012b2434020ca9bcf1a539"
+  },
+  {
+    "path": "generative_models/sgm/models/__init__.py",
+    "sha256": "b0d94f5ee2f07286846dba10f472f6e42c2b8c72cc4e9db25d202fe5ac8ff095",
+    "portfolio_sha256": "b0d94f5ee2f07286846dba10f472f6e42c2b8c72cc4e9db25d202fe5ac8ff095"
+  },
+  {
+    "path": "generative_models/sgm/models/autoencoder.py",
+    "sha256": "2de9811387535097444b5d51cef19ed422f0e86dcf48a2842a74ba218370e465",
+    "portfolio_sha256": "dec0df0900a6b13cd48033d58cb7761f4c523e1c49ad230b9a44971d2905854c"
+  },
+  {
+    "path": "generative_models/sgm/models/diffusion.py",
+    "sha256": "62874270d66341cfe9e47f06da3f6dccc9c191f1cf65a53a74c8a378ff3d80e0",
+    "portfolio_sha256": "44f64b1e5210ae3d2b6d0d8bcb5dcc705f58f034d28ee312bd55e34d9fcafa39"
+  },
+  {
+    "path": "generative_models/sgm/modules/__init__.py",
+    "sha256": "2e1acca89d60eddcf12de77d83b713a26f9124c97f259249b670879248cb57da",
+    "portfolio_sha256": "2e1acca89d60eddcf12de77d83b713a26f9124c97f259249b670879248cb57da"
+  },
+  {
+    "path": "generative_models/sgm/modules/attention.py",
+    "sha256": "0bf0b4ccbe978c1d94f132a777331d15774d982ff51ba819b0bb593937dc5121",
+    "portfolio_sha256": "02322e4969ac49967a3919e74362e6243cd621eb989380e7d2954de5e192e961"
+  },
+  {
+    "path": "generative_models/sgm/modules/autoencoding/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "portfolio_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "generative_models/sgm/modules/autoencoding/regularizers/__init__.py",
+    "sha256": "0a8c247f7d8f2eb5a1c17a223cdf9238c5e80522c39c0c0479d3740475c290ec",
+    "portfolio_sha256": "e3b9fb678f4256b14c2a0550e1503c73792c4d5cf4a802dc1b1acbb817cd1214"
+  },
+  {
+    "path": "generative_models/sgm/modules/autoencoding/regularizers/base.py",
+    "sha256": "f15c793143643007d2d652725faf9875ba159b40a41d1ef820ffdb3667c0f664",
+    "portfolio_sha256": "f15c793143643007d2d652725faf9875ba159b40a41d1ef820ffdb3667c0f664"
+  },
+  {
+    "path": "generative_models/sgm/modules/autoencoding/regularizers/quantize.py",
+    "sha256": "11a0b1ed4884bd89aa71f8ae0dbeb36ec43310854a5c208b9f3d0daa46310085",
+    "portfolio_sha256": "11a0b1ed4884bd89aa71f8ae0dbeb36ec43310854a5c208b9f3d0daa46310085"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "portfolio_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/denoiser.py",
+    "sha256": "3be9c7160791dda06eee16a7e96a588f6a876e13ec4f85c32596c924805a9035",
+    "portfolio_sha256": "3be9c7160791dda06eee16a7e96a588f6a876e13ec4f85c32596c924805a9035"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/denoiser_scaling.py",
+    "sha256": "9a0c497f912308c6677d9875dc2501969026e40c6ac7b74f5529e275d1edc710",
+    "portfolio_sha256": "9a0c497f912308c6677d9875dc2501969026e40c6ac7b74f5529e275d1edc710"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/discretizer.py",
+    "sha256": "4eee0e70d110245b2dc72602b14bbe20dbc120d5549b4a27999ec56e64bd0be5",
+    "portfolio_sha256": "4eee0e70d110245b2dc72602b14bbe20dbc120d5549b4a27999ec56e64bd0be5"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/guiders.py",
+    "sha256": "245eb72cd96c1de428ba619f6ac23010f9ca59cae1088c982afa73481b3ab233",
+    "portfolio_sha256": "245eb72cd96c1de428ba619f6ac23010f9ca59cae1088c982afa73481b3ab233"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/model.py",
+    "sha256": "a97b3242217cb5540f703dca2d17e8f0fab7bf9f59aeda8d8b6baaac9aa75f20",
+    "portfolio_sha256": "a97b3242217cb5540f703dca2d17e8f0fab7bf9f59aeda8d8b6baaac9aa75f20"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/openaimodel.py",
+    "sha256": "c18fbef733bc9ea65a8f9ba6d835eade2940b836aad2e187703475bda95df92a",
+    "portfolio_sha256": "7dbcec6d078135ec7014519a9229e6622911d107ff4f9cb3fd0c78e1aa2860b6"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/sampling.py",
+    "sha256": "4f229177de22bfeef79e0f9fd123ae33f17ebe115bbbe168609af117267bad66",
+    "portfolio_sha256": "374391aa74810a6fddf1303ddac13a37dc38c838c2cfcf56c1394621adbc9048"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/sampling_utils.py",
+    "sha256": "d4ea069a5288bdc3af2f2d9510c41d4e03ecf19b5ecba7cc4789fee9f7fd4025",
+    "portfolio_sha256": "2579de2369176fd2260129c03051543af358c017917c754ece1b2e8c149fae4c"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/util.py",
+    "sha256": "d586f9296def19794ae41cee69f374433400f3ff6206a1df4ab796043fdc439f",
+    "portfolio_sha256": "d586f9296def19794ae41cee69f374433400f3ff6206a1df4ab796043fdc439f"
+  },
+  {
+    "path": "generative_models/sgm/modules/diffusionmodules/wrappers.py",
+    "sha256": "2e48a351f1c1a5dcaa6e337c2ac616d1f9f5a305736a2c1cb3b7de3ae78a5a58",
+    "portfolio_sha256": "2e48a351f1c1a5dcaa6e337c2ac616d1f9f5a305736a2c1cb3b7de3ae78a5a58"
+  },
+  {
+    "path": "generative_models/sgm/modules/distributions/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "portfolio_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "generative_models/sgm/modules/distributions/distributions.py",
+    "sha256": "18708d985e0bbe9b0681146297977dce4c0eb4e6dbeea295d88adbfdd950b0b1",
+    "portfolio_sha256": "18708d985e0bbe9b0681146297977dce4c0eb4e6dbeea295d88adbfdd950b0b1"
+  },
+  {
+    "path": "generative_models/sgm/modules/ema.py",
+    "sha256": "51f0a240a0fd3ac021277a189e5c2c8353218e1e29bbc1592b69afb48d8acab2",
+    "portfolio_sha256": "1210643dae18497fcad8accf401d533bad688ee8ffbb4fab113b6c69f69ac92c"
+  },
+  {
+    "path": "generative_models/sgm/modules/encoders/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "portfolio_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "generative_models/sgm/modules/encoders/modules.py",
+    "sha256": "497b83eeab0c5d97036548ed7b29e5a569788d98616bde7acc9a810e6ab507e5",
+    "portfolio_sha256": "8256f28ec6e23b33b380f309bba6dc7637076957902b5d4f8b7fc2c98bbd8fc1"
+  },
+  {
+    "path": "generative_models/sgm/util.py",
+    "sha256": "0d4e497f6a33296cef27a6b90b2392dc8993e2ba398f32da2cb4230cea48b4bb",
+    "portfolio_sha256": "90bcac05721c6de439965c1206a6c44755048e08602f61de3636b1cb01c6bf96"
+  }
+]

@@ -1,0 +1,83 @@
+[
+  {
+    "command": [
+      "python",
+      "train.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "command": [
+      "python",
+      "eval/reconstruct.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "command": [
+      "python",
+      "eval/metrics.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "command": [
+      "python",
+      "eval/caption_keyframe.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "command": [
+      "python",
+      "eval/enhance.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "command": [
+      "python",
+      "tools/prepare_protocol.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "command": [
+      "python",
+      "tools/highpass.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "command": [
+      "python",
+      "tools/build_things_eeg2_index.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "command": [
+      "python",
+      "tools/cache_things_eeg2_openclip.py",
+      "--help"
+    ],
+    "exit_code": 0,
+    "error": null
+  }
+]
