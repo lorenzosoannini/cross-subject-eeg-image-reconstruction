@@ -35,6 +35,30 @@
       "source": "thesis/figures/architecture_author_horizontal.pdf",
       "source_sha256": "dd0623380ecce456eae9844894daa067767e87690367ffcc0d12ad7a5f682d9d",
       "rendering": "pdftoppm PNG; architecture respects the PDF CropBox; figures and measured values unchanged"
+    },
+    {
+      "file": "assets/preview-aquarium-target.png",
+      "source": "output/defense_beamer_v9/figures/target_320.png",
+      "source_sha256": "3b535da287045d20e83cf852a3cd56ed548570b4bdd86445108e1543f61dc20e",
+      "rendering": "Unmodified image asset from the final thesis defence presentation; base reconstruction or target as labelled."
+    },
+    {
+      "file": "assets/preview-aquarium-reconstruction.png",
+      "source": "output/defense_beamer_v9/figures/recon_320.png",
+      "source_sha256": "555d50b29c951ead67f0073bca62b7eb96dcf46e10721c58df0878193d658f9b",
+      "rendering": "Unmodified image asset from the final thesis defence presentation; base reconstruction or target as labelled."
+    },
+    {
+      "file": "assets/preview-polar-bear-target.png",
+      "source": "output/defense_beamer_v9/figures/target_10726.png",
+      "source_sha256": "ff6bff541a1fa6ce3aaaefe50ff09578c45f7aa706010bcba0c79f2468cfaca0",
+      "rendering": "Unmodified image asset from the final thesis defence presentation; base reconstruction or target as labelled."
+    },
+    {
+      "file": "assets/preview-polar-bear-reconstruction.png",
+      "source": "output/defense_beamer_v9/figures/recon_10726.png",
+      "source_sha256": "6eee71dac642766cdcafe90000d81553d44886b1d4e51742286fb3ae0a0209df",
+      "rendering": "Unmodified image asset from the final thesis defence presentation; base reconstruction or target as labelled."
     }
   ],
   "result_tables": [

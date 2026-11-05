@@ -5,7 +5,7 @@
   },
   {
     "path": "README.md",
-    "sha256": "902377c84e4e8366be64c22bf733b4d775ad4f12e32eec0fa82af06f63a1c044"
+    "sha256": "721ce2aa01dd92ef3237fa6a4aa5dc1846ec3cc22627f5b08bd70b466660b872"
   },
   {
     "path": "THIRD_PARTY.md",
@@ -22,6 +22,22 @@
   {
     "path": "assets/failure-cases.png",
     "sha256": "7c7a748930ca11b34c5869820de40ece342256260522804c828ba390d9d89341"
+  },
+  {
+    "path": "assets/preview-aquarium-reconstruction.png",
+    "sha256": "555d50b29c951ead67f0073bca62b7eb96dcf46e10721c58df0878193d658f9b"
+  },
+  {
+    "path": "assets/preview-aquarium-target.png",
+    "sha256": "3b535da287045d20e83cf852a3cd56ed548570b4bdd86445108e1543f61dc20e"
+  },
+  {
+    "path": "assets/preview-polar-bear-reconstruction.png",
+    "sha256": "6eee71dac642766cdcafe90000d81553d44886b1d4e51742286fb3ae0a0209df"
+  },
+  {
+    "path": "assets/preview-polar-bear-target.png",
+    "sha256": "ff6bff541a1fa6ce3aaaefe50ff09578c45f7aa706010bcba0c79f2468cfaca0"
   },
   {
     "path": "assets/reconstructions.png",
@@ -81,7 +97,7 @@
   },
   {
     "path": "docs/result_sources.json",
-    "sha256": "23b30fb66e23bc4e3ad55898f09217095cf1f93c72210a6544bd8c36c41ead28"
+    "sha256": "f32560d439603e26feab5a94859cedb1a6e9267477057d93d16ee0d12631889e"
   },
   {
     "path": "docs/source_provenance.json",

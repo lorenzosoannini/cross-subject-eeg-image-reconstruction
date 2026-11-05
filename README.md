@@ -1,73 +1,132 @@
-# Cross-Subject EEG-to-Image Reconstruction
-
-Can an image reconstruction model work for a person it was not trained on? For my master's thesis, I investigated this question using THINGS-EEG2 recordings, a pretrained REVE encoder and the visual-semantic generation framework of [ZEBRA](https://github.com/xmed-lab/ZEBRA). The project adapts ZEBRA from fMRI to EEG and replaces its fixed neural residual with two learned representation branches.
-
-The task is **cross-subject reconstruction of unseen photographs from familiar categories**. Subjects 1–9 are the source participants; subject 10 is the heldout participant in the reported experiment. This is not a category-zero-shot task.
+<h1 align="center">Cross-Subject EEG-to-Image Reconstruction</h1>
 
 <p align="center">
-  <img src="assets/reconstructions.png" width="690" alt="Four selected thesis examples: target photograph, EEG-conditioned base reconstruction and enhanced reconstruction for heldout subject 10">
+  <strong>Reconstructing visual content from EEG for a participant excluded from training.</strong><br>
+  Master's thesis · Sapienza University of Rome · Lorenzo Soannini
 </p>
 
-*Selected examples from the thesis: aquarium, lifebuoy, polar bear and sunflower. Columns show the target, base reconstruction and caption-refined reconstruction. These examples illustrate recovered visual content; their selection does not estimate a success rate.*
+<p align="center">
+  <a href="#my-contribution">My contribution</a> ·
+  <a href="#how-it-works">Method</a> ·
+  <a href="#thesis-results">Results</a> ·
+  <a href="#explore-the-code">Code &amp; setup</a>
+</p>
 
-## From EEG to a visual condition
+<table align="center">
+  <tr>
+    <th colspan="2">Aquarium</th>
+    <th colspan="2">Polar bear</th>
+  </tr>
+  <tr>
+    <td align="center">Viewed image</td>
+    <td align="center">EEG reconstruction</td>
+    <td align="center">Viewed image</td>
+    <td align="center">EEG reconstruction</td>
+  </tr>
+  <tr>
+    <td><img src="assets/preview-aquarium-target.png" width="170" alt="Target photograph of an aquarium"></td>
+    <td><img src="assets/preview-aquarium-reconstruction.png" width="170" alt="Aquarium reconstructed from subject-10 EEG"></td>
+    <td><img src="assets/preview-polar-bear-target.png" width="170" alt="Target photograph of a polar bear"></td>
+    <td><img src="assets/preview-polar-bear-reconstruction.png" width="170" alt="Polar bear reconstructed from subject-10 EEG"></td>
+  </tr>
+</table>
 
-REVE encodes 63-channel EEG windows and is adapted with LoRA. A learned token resampler bridges its channel-indexed features to the visual token interface. Two independently learned branches represent shared and subject-related information, with joint reconstruction and covariance/variance objectives supporting information preservation and separation.
+*Selected base reconstructions from the thesis, heldout subject 10. Viewpoint and fine details can differ; selected examples do not estimate a success rate.*
 
-The architectural change concerns the neural space: instead of defining `E_s = E − E_i`, both `E_i` and `E_s` are learned from the complete EEG representation `E`. The visual residual `F_i = F − F_s` is retained. The shared branch supplies `F_s`, the sole neural condition for the diffusion prior and SDXL unCLIP generator. Subject heads, the private branch and latent reconstruction support training without becoming extra generator inputs.
+<table>
+  <tr>
+    <td align="center"><strong>87.60%</strong><br>CLIP two-way identification<br><sub>1,654 targets · heldout subject 10</sub></td>
+    <td align="center"><strong>89.38%</strong><br>Inception two-way identification<br><sub>1,654 targets · heldout subject 10</sub></td>
+    <td align="center"><strong>+28.71 pp</strong><br>CLIP improvement over residual model<br><sub>Controlled 100-target comparison</sub></td>
+  </tr>
+</table>
 
-![Thesis architecture: REVE, learned shared/private branches, visual projection and semantic diffusion conditioning](assets/architecture.png)
+My thesis adapts [ZEBRA](https://github.com/xmed-lab/ZEBRA) from fMRI to EEG, using REVE and a learned shared/private representation. The task combines an unseen participant with unseen photographs of **familiar object categories**. Subjects 1–9 are the sources; subject 10 is held out in the reported experiment. Identification scores are pairwise comparisons, with a nominal 50% chance reference—not top-1 classification accuracy.
 
-*Architecture from the thesis. The joint latent decoder reconstructs the EEG representation; the blurry decoder provides auxiliary image-latent supervision. The token resampler is included in the projection paths.*
+## My contribution
 
-Repeated responses to the same photograph are encoded separately. Their `F_s` embeddings are averaged before prior sampling. An optional refinement stage captions the generated image with BLIP-2 and uses that caption in image-to-image diffusion. Ground-truth photographs and category labels are not inference conditions.
+- **EEG-to-vision adaptation:** integrated THINGS-EEG2, REVE with LoRA, and a learned token resampler to connect EEG features to the image generator's visual interface.
+- **Learned latent decomposition:** replaced the fixed neural residual with independently learned shared/private branches, supported by joint reconstruction and separation objectives.
+- **Experimental evaluation:** compared residual and learned decomposition, single-response and mean-embedding inference, and an adapted ATM baseline using eight reconstruction metrics.
 
-## Thesis results
+**Technical stack:** Python · PyTorch · Transformers · LoRA · OpenCLIP · diffusion priors · SDXL unCLIP · BLIP-2 · W&B
 
-On the full vocabulary, the reported evaluation contains **1,654 target photographs** for subject 10, with one target per category. The table below reports the base and enhanced outputs from that experiment.
+## How it works
 
-| Metric | Base | Enhanced |
-|---|---:|---:|
-| PixCorr ↑ | 0.1169 | 0.1188 |
-| SSIM ↑ | 0.3363 | 0.3762 |
-| AlexNet-2 identification ↑ | 79.15% | 79.31% |
-| AlexNet-5 identification ↑ | 88.97% | 87.75% |
-| Inception identification ↑ | 89.38% | 88.58% |
-| CLIP identification ↑ | 87.60% | 86.37% |
-| EfficientNet distance ↓ | 0.6313 | 0.6342 |
-| SwAV distance ↓ | 0.4492 | 0.4635 |
+```mermaid
+flowchart LR
+    A["EEG + electrode positions"] --> B["REVE + LoRA"]
+    B --> C["Learned shared branch"]
+    C --> D["Visual condition F_s"]
+    D --> E["Mean across responses"]
+    E --> F["Diffusion prior"]
+    F --> G["SDXL unCLIP image"]
+```
 
-Identification scores measure **two-way comparisons**, with a nominal chance reference of 50%. They are not top-1 accuracy over 1,654 candidates. Enhancement increases SSIM here while slightly reducing several semantic identification scores.
-
-Two controlled comparisons use the same **100-target development set**:
-
-- Replacing residual decomposition with learned branches raises base CLIP identification from **58.87% to 87.58%** (+28.71 percentage points).
-- With the proposed-model checkpoint fixed, averaging response embeddings raises base CLIP identification from **70.73% to 87.58%** (+16.85 points) compared with the first retained response.
-
-![Thesis controlled comparisons of neural decomposition and repeated-response aggregation](assets/controlled-comparisons.png)
-
-*Subject 10, base reconstructions, 100 targets. Both interventions improve all eight reported metrics for base and enhanced outputs. The decomposition comparison measures the combined architectural and regularization change; it does not isolate a single loss term.*
-
-The thesis also evaluates an adapted [ATM](https://github.com/ncclab-sustech/EEG_Image_decode) baseline. On the full-vocabulary subject-10 comparison, the proposed model has stronger feature-based correspondence, while ATM encoder-only generation has higher PixCorr and SSIM. [Full results, comparisons and limitations](docs/RESULTS.md) · [Machine-readable tables](results/)
-
-## What the images still get wrong
-
-Recovering recognizable content does not guarantee the original viewpoint, object count, pose or layout. The thesis includes failures such as altered animal anatomy, router-to-boat substitution and a walrus reconstructed as a rodent. Refinement can preserve an incorrect interpretation.
+The model learns shared and subject-related branches from the complete EEG representation. Only the shared branch's semantic projection, `F_s`, conditions generation. Repeated responses are encoded separately and their embeddings are averaged **before** prior sampling. An optional BLIP-2 caption of the generated image guides refinement.
 
 <details>
-<summary>Selected failure cases and source-subject comparisons</summary>
+<summary><strong>Technical detail: decomposition, supervision and full architecture</strong></summary>
 
-![Thesis failure examples comparing target, subject-10 outputs and subject-4 source-reference outputs](assets/failure-cases.png)
+The proposed model learns both `E_i` and `E_s` from `E`, replacing the neural subtraction constraint `E_s = E − E_i`. Joint latent reconstruction, covariance and variance-floor losses support preservation and separation. The visual residual `F_i = F − F_s` remains part of training.
 
-*Columns: target, subject-10 base/enhanced, subject-4 base/enhanced. These are selected diagnostic examples, not aggregate evidence that source-subject reconstruction is always better.*
+The EEG interface uses 63 channels, REVE width 1,216, shared/private bottlenecks of 512/256 and a resampler producing 256 visual tokens. Subject heads and the private branch support training; inference loads the shared route and prior. Ground-truth photographs and category labels are not generator inputs.
+
+![Thesis architecture: REVE, learned shared/private branches, projection heads and semantic diffusion conditioning](assets/architecture.png)
+
+*Architecture from the thesis. The joint decoder reconstructs the EEG representation; the blurry decoder provides auxiliary image-latent supervision. The resampler is included in the projection paths.*
+
+[Protocol and objectives](docs/PROTOCOL.md) · [Model implementation](model/network.py)
 
 </details>
 
-The reported transfer result concerns one heldout participant. Broader participant-level generalization requires additional folds. The main results use repeated responses, and the identification candidate pool does not test fine-grained discrimination among photographs of the same category.
+## Thesis results
 
-## Running the implementation
+The full-vocabulary experiment evaluates **1,654 photographs, one per category**, for subject 10. On the matched 100-target development set, both learned decomposition and response averaging improve all eight reported metrics for base and enhanced outputs.
 
-The source is organized around preprocessing, source-only normalization, learned decomposition, representation pretraining, `F_s`-conditioned downstream training, image generation and paired evaluation. EEG variable names replace inherited fMRI names; abandoned experimental and target-calibration workflows are excluded.
+![Controlled thesis comparisons: learned versus residual decomposition, and mean embeddings versus a single response](assets/controlled-comparisons.png)
+
+| Experiment | Base CLIP two-way identification | Evaluation set |
+|---|---:|---|
+| Residual → learned decomposition | 58.87% → **87.58%** | Same 100 targets |
+| First response → mean embedding | 70.73% → **87.58%** | Same 100 targets; model fixed |
+| Full-vocabulary learned model | **87.60%** | 1,654 targets |
+
+The decomposition comparison measures the combined architecture and regularization change. The adapted [ATM](https://github.com/ncclab-sustech/EEG_Image_decode) comparison favours the proposed model on feature-based correspondence; ATM encoder-only generation has higher PixCorr and SSIM. Refinement raises SSIM in the full-vocabulary experiment while reducing several semantic identification scores.
+
+**[All eight metrics and baseline comparisons →](docs/RESULTS.md)** · [Full-precision CSV tables](results/)
+
+<details>
+<summary><strong>More examples: base and refined reconstructions</strong></summary>
+
+<p align="center">
+  <img src="assets/reconstructions.png" width="650" alt="Four selected thesis examples showing targets, subject-10 base reconstructions and refined reconstructions">
+</p>
+
+*Aquarium, lifebuoy, polar bear and sunflower. Refinement uses captions derived from the generated images.*
+
+</details>
+
+<details>
+<summary><strong>Failure cases and limits</strong></summary>
+
+![Selected thesis errors, comparing subject-10 outputs with the subject-4 source reference](assets/failure-cases.png)
+
+*Columns: target, subject-10 base/enhanced, subject-4 base/enhanced. Errors include altered anatomy, router-to-boat substitution and a walrus reconstructed as a rodent. Refinement can preserve an incorrect interpretation.*
+
+The reported transfer result concerns one heldout participant. Broader participant-level generalization requires additional folds. The main results aggregate repeated responses; they are not single-trial scores. Identification candidates come from different categories, so these scores do not establish fine-grained within-category photographic discrimination. Selected examples and aggregate scores do not provide confidence intervals.
+
+</details>
+
+## Explore the code
+
+| Component | Implementation |
+|---|---|
+| Image partitions and source-only normalization | [Data protocol](data_loader/protocol.py) |
+| REVE adaptation and learned shared/private branches | [Encoder](model/encoder.py) · [Decomposition](model/decomposition.py) |
+| Pretraining and semantic prior conditioning | [Training](train.py) · [Model](model/network.py) |
+| Repeated-response aggregation and generation | [Aggregation](model/aggregation.py) · [Reconstruction](eval/reconstruct.py) |
+| Paired image evaluation | [Metrics](eval/eval_metrics.py) |
 
 ```bash
 python -m venv .venv
@@ -76,8 +135,14 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 ```
 
-Full training and generation require CUDA, THINGS-EEG2 and external pretrained weights. [Data preparation and commands](docs/RUNNING.md) · [Configuration](config.json) · [Protocol](docs/PROTOCOL.md) · [Validation](docs/VALIDATION.md)
+**17 component tests passed.** They cover split integrity, source-only statistics, semantic conditioning, gradients, aggregation, sampling and image/metric contracts. Full training and generation require CUDA, THINGS-EEG2 and external pretrained weights.
 
-**Results provenance.** The figures and scores above come from the completed thesis and defence materials. This repository is the accompanying consolidated implementation, with explicitly documented partition, normalization and prior-routing changes for publication. Those changes require compatible retraining; the published checkout has not been rerun to reproduce the historical scores. [Source records](docs/result_sources.json)
+[Setup and training guide](docs/RUNNING.md) · [Configuration](config.json) · [Validation report](docs/VALIDATION.md)
 
-**Master's thesis project by Lorenzo Soannini**, Engineering in Computer Science, Sapienza University of Rome. Thesis: *EEG-to-Image Reconstruction through Multimodal Visual–Semantic Alignment*. Supervisor: Prof. Danilo Comminiello. [Third-party components and attribution](THIRD_PARTY.md)
+**Provenance:** the figures and scores are from the completed thesis and defence. This accompanying implementation was consolidated for publication, including documented partition, normalization and prior-routing changes that require compatible retraining. The published checkout has not been rerun to reproduce the historical scores. [Results sources](docs/result_sources.json)
+
+---
+
+**Lorenzo Soannini** · Master's Degree in Engineering in Computer Science, **Sapienza University of Rome**<br>
+*EEG-to-Image Reconstruction through Multimodal Visual–Semantic Alignment* · Supervisor: Prof. Danilo Comminiello<br>
+[Third-party components and attribution](THIRD_PARTY.md)
